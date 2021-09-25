@@ -69,7 +69,13 @@ export default class CCInput extends Component {
   focus = () => this.refs.input.focus();
 
   _onFocus = () => this.props.onFocus(this.props.field);
-  _onChange = value => this.props.onChange(this.props.field, value);
+  _onChange = value => {
+    let text = value.trim();
+    this.refs.input.setNativeProps({
+      text
+    });
+    this.props.onChange(this.props.field, text)
+  };
 
   onSubmitHandler = () => {
     const { field, onBecomeValid } = this.props;
