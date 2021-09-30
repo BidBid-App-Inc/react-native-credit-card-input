@@ -39,6 +39,7 @@ export default class CCInput extends Component {
     onBecomeEmpty: PropTypes.func,
     onBecomeValid: PropTypes.func,
     isFromUpdateCard: PropTypes.bool,
+    isFromPaypal: PropTypes.bool,
     additionalInputProps: PropTypes.shape(TextInput.propTypes),
   };
 
@@ -56,6 +57,7 @@ export default class CCInput extends Component {
     additionalInputProps: {},
     autoCapitalize: 'none',
     isFromUpdateCard: false,
+    isFromPaypal: false,
   };
 
   componentWillReceiveProps = newProps => {
@@ -70,7 +72,10 @@ export default class CCInput extends Component {
 
   _onFocus = () => this.props.onFocus(this.props.field);
   _onChange = value => {
-    let text = value.trim();
+    let text = value;
+    if(this.props.isFromPaypal) {
+      text = value.trim();
+    }
     this.refs.input.setNativeProps({
       text
     });

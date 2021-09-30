@@ -123,7 +123,7 @@ export default class CreditCardInput extends Component {
       inputStyle, labelStyle, validColor, invalidColor, placeholderColor,
       placeholders, labels, values, status,
       onFocus, onChange, onBecomeEmpty, onBecomeValid,
-      additionalInputsProps, isFromUpdateCard
+      additionalInputsProps, isFromUpdateCard, isFromPaypal
     } = this.props;
 
     return {
@@ -137,7 +137,7 @@ export default class CreditCardInput extends Component {
       status: status[field],
       isFromUpdateCard,
       onFocus, onChange, onBecomeEmpty, onBecomeValid,
-
+      isFromPaypal,
       additionalInputProps: additionalInputsProps[field],
     };
   };
