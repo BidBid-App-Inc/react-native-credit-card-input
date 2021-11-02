@@ -51,6 +51,8 @@ export default class CreditCardInput extends Component {
     inputStyle: Text.propTypes.style,
     inputContainerStyle: ViewPropTypes.style,
 
+    cardholderLabel: PropTypes.string,
+    expireLabel: PropTypes.string,
     validColor: PropTypes.string,
     invalidColor: PropTypes.string,
     placeholderColor: PropTypes.string,
@@ -144,6 +146,7 @@ export default class CreditCardInput extends Component {
 
   render() {
     const {
+      expireLabel, cardholderLabel,
       cardImageFront, cardImageBack, inputContainerStyle,
       values: { number, expiry, cvc, name, type }, focused,
       allowScroll, requiresName, requiresCVC, requiresPostalCode,
@@ -154,6 +157,8 @@ export default class CreditCardInput extends Component {
       return (
         <View style={s.container}>
           <CreditCard focused={focused}
+                      expireLabel={expireLabel}
+                      cardholderLabel={cardholderLabel}
                       brand={type}
                       scale={cardScale}
                       isFromPaypal={true}
@@ -175,6 +180,8 @@ export default class CreditCardInput extends Component {
       return (
         <View style={s.container}>
           <CreditCard focused={focused}
+                      expireLabel={expireLabel}
+                      cardholderLabel={cardholderLabel}
                       brand={type}
                       scale={cardScale}
                       isFromCardDetail={isFromCardDetail}
@@ -195,6 +202,8 @@ export default class CreditCardInput extends Component {
       return (
         <View style={s.container}>
           <CreditCard focused={focused}
+                      expireLabel={expireLabel}
+                      cardholderLabel={cardholderLabel}
                       brand={type}
                       scale={cardScale}
                       isFromCardDetail={isFromCardDetail}
@@ -214,6 +223,8 @@ export default class CreditCardInput extends Component {
       return      (
         <View style={s.container}>
           <CreditCard focused={focused}
+                      expireLabel={expireLabel}
+                      cardholderLabel={cardholderLabel}
                       brand={type}
                       scale={cardScale}
                       isFromPaypal={isFromPaypal}
@@ -237,6 +248,8 @@ export default class CreditCardInput extends Component {
     return (
       <View style={s.container}>
         <CreditCard focused={focused}
+                    expireLabel={expireLabel}
+                    cardholderLabel={cardholderLabel}
                     brand={type}
                     isFromUpdateCard={isFromUpdateCard}
                     scale={cardScale}

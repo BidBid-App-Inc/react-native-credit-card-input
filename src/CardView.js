@@ -114,6 +114,8 @@ export default class CardView extends Component {
   static propTypes = {
     focused: PropTypes.string,
 
+    cardholderLabel: PropTypes.string,
+    expireLabel: PropTypes.string,
     brand: PropTypes.string,
     name: PropTypes.string,
     number: PropTypes.string,
@@ -133,6 +135,8 @@ export default class CardView extends Component {
 
   static defaultProps = {
     name: "",
+    cardholderLabel: 'Cardholder Name',
+    expireLabel: 'Expire',
     placeholder: {
       number: "**** **** **** ****",
       name: "FULL NAME",
@@ -151,7 +155,7 @@ export default class CardView extends Component {
   };
 
   render() {
-    const { focused,
+    const { focused, cardholderLabel, expireLabel,
       brand, name, number, expiry, cvc, customIcons,
       placeholder, imageFront, imageBack, scale, fontFamily, isFromPaypal, iconPaypal, bgPaypal, isFromCardDetail } = this.props;
 
@@ -214,13 +218,13 @@ export default class CardView extends Component {
               { !number ? placeholder.number : number }
             </Text>
             <Text style={[s.baseText, { fontFamily }, s.holderName]}
-                  numberOfLines={1}>Cardholder Name</Text>
+                  numberOfLines={1}>{cardholderLabel}</Text>
             <Text style={[s.baseText, { fontFamily }, s.name, !name && s.placeholder, focused === "name" && s.focused]}
                   numberOfLines={1}>
               { !name ? placeholder.name : name.toUpperCase() }
             </Text>
             <Text style={[s.baseText, { fontFamily }, s.expiryLabel, s.placeholder, focused === "expiry" && s.focused]}>
-              Expire
+              {expireLabel}
             </Text>
             <Text style={[s.baseText, { fontFamily }, s.expiry, !expiry && s.placeholder, focused === "expiry" && s.focused]}>
               { !expiry ? placeholder.expiry : expiry }
